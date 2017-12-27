@@ -76,9 +76,11 @@ class SourceDirsTaskSpec extends Specification {
         expect:
         project.tasks.findByName('lessc').source.collect {
             it.absoluteFile
-        } == [new File('src/test/resources/less/basic.less'),
-                new File('src/test/resources/less/import1/imported1.less'),
-                new File('src/test/resources/less/import1/import2/imported2.less'),
-                new File('src/test/resources/customizedless/import1/imported1.less'),].absoluteFile
+        } == [
+            new File('src/test/resources/less/basic.less'),
+            new File('src/test/resources/less/import1/import2/imported2.less'),
+            new File('src/test/resources/less/import1/imported1.less'),
+            new File('src/test/resources/customizedless/import1/imported1.less'),
+        ].absoluteFile
     }
 }
