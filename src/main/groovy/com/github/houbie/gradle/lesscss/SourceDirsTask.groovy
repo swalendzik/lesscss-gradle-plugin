@@ -56,7 +56,7 @@ class SourceDirsTask extends ConventionTask implements PatternFilterable {
     void setSourceDir(Object sourceDir) {
         sourceDirs.clear()
         sourceDirs << sourceDir
-        inputs.sourceDir(sourceDir)
+        inputs.dir(sourceDir)
     }
 
     /**
@@ -68,7 +68,7 @@ class SourceDirsTask extends ConventionTask implements PatternFilterable {
     SourceDirsTask sourceDir(Object... sourceDirs) {
         for (sourceDir in sourceDirs) {
             this.sourceDirs << sourceDir
-            inputs.sourceDir(sourceDir)
+            inputs.dir(sourceDir)
         }
         return this
     }
