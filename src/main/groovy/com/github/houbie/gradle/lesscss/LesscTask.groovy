@@ -24,6 +24,8 @@ import com.github.houbie.lesscss.resourcereader.FileSystemResourceReader
 import org.gradle.api.GradleException
 import org.gradle.api.file.FileVisitDetails
 import org.gradle.api.tasks.Input
+import org.gradle.api.tasks.InputDirectory
+import org.gradle.api.tasks.InputFile
 import org.gradle.api.tasks.Optional
 import org.gradle.api.tasks.OutputDirectory
 import org.gradle.api.tasks.TaskAction
@@ -51,13 +53,15 @@ class LesscTask extends SourceDirsTask {
     @Optional
     String encoding
 
+    @InputDirectory
     def destinationDir
 
-    @OutputDirectory
     File getDestinationDir() {
         project.file(destinationDir)
     }
 
+    @Input
+    @Optional
     Closure preCompileClosure
 
     void preCompile(Closure preCompileClosure) {
@@ -101,6 +105,7 @@ class LesscTask extends SourceDirsTask {
         return compilationTask
     }
 
+    @OutputDirectory
     File getCacheDir() {
         new File(project.buildDir, 'lessc')
     }

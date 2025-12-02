@@ -21,6 +21,7 @@ import org.gradle.api.file.FileTreeElement
 import org.gradle.api.internal.ConventionTask
 import org.gradle.api.specs.Spec
 import org.gradle.api.tasks.InputFiles
+import org.gradle.api.tasks.OutputDirectories
 import org.gradle.api.tasks.SkipWhenEmpty
 import org.gradle.api.tasks.util.PatternFilterable
 import org.gradle.api.tasks.util.PatternSet
@@ -43,6 +44,7 @@ class SourceDirsTask extends ConventionTask implements PatternFilterable {
         project.files(sourceDirs ?: null).getAsFileTree().matching(patternSet)
     }
 
+    @OutputDirectories
     List<File> getSourceDirs() {
         sourceDirs.collect { project.file(it) }
 
@@ -140,6 +142,7 @@ class SourceDirsTask extends ConventionTask implements PatternFilterable {
     /**
      * {@inheritDoc}
      */
+    @OutputDirectories
     Set<String> getIncludes() {
         return patternSet.includes
     }
@@ -155,6 +158,7 @@ class SourceDirsTask extends ConventionTask implements PatternFilterable {
     /**
      * {@inheritDoc}
      */
+    @OutputDirectories
     Set<String> getExcludes() {
         return patternSet.excludes
     }
